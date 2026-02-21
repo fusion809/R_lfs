@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 exec > >(tee -a ~/R_lfs/gcc/gcc-15.2.0-fortran.log ) 2>&1
 NAME=gcc
 VERSION=15.2.0
