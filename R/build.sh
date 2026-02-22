@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# SlackBuild script for R
+# Originally a SlackBuild script for R
+# Adapted to be used for LFS by Brenton Horne
 
-# Copyright 2019-2025 Andrew Payne <phalange@komputermatrix.com>
-# Copyright 2014-2017 melikamp, Andrew Rowland
+# Authors as a SlackBuild script: 
+# 2019-2025 Andrew Payne <phalange@komputermatrix.com>
+# 2014-2017 melikamp, Andrew Rowland
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -74,6 +76,9 @@ fi
 set -e
 
 rm -rf $PRGNAM-$VERSION
+if ! [[ -f $CWD/$PRGNAM-$VERSION.tar.xz ]]; then
+	wget -c https://cran.r-project.org/src/base/$PRGNAM-${VERSION/.*/}/$PRGNAM-$VERSION.tar.xz
+fi
 tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 CFLAGS="$SLKCFLAGS" \
