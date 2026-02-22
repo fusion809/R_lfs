@@ -30,10 +30,11 @@ cd    build               &&
 make -j$(nproc)
 GCCDIR=$HOME/R_lfs/gcc
 INSTDIR=$GCCDIR/install
-mkdir $INSTDIR
+mkdir -p $INSTDIR
+cd build
 make install DESTDIR=$INSTDIR
 mkdir -pv $INSTDIR/usr/share/gdb/auto-load/usr/lib
-cp -v /usr/lib/*gdb.py $INSTDIR/usr/share/gdb/auto-load/usr/lib
+cp -v usr/lib/*gdb.py $INSTDIR/usr/share/gdb/auto-load/usr/lib
 find . -type f | sort > $GCCDIR/gcc-install-files.txt
 while read f; do
     if [ ! -e "/$f" ]; then
